@@ -1,0 +1,23 @@
+on:
+  push:
+    paths:
+      - R
+
+name: Update documentation
+
+jobs:
+  render:
+    name: Update documentation
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: Install packages
+        run: Rscript -e 'install.packages(c("roxygen2"))'
+      - name: Update documentation
+        run: Rscript -e 'roxygen2::roxygenize()'
+      - name: Commit results
+        run: |
+          git commit -a -m 'Re-build documentation' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
