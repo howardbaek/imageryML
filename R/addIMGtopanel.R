@@ -6,25 +6,26 @@
 #' @param img.list A list of images for each center. Image 1 goes with panel 1, etc. Panels are numbered across rows. Image are recycled if the list is shorter than the number of panels.
 #' @param pal The color ramp for the images. This will determine what the images look like.
 #'
-#' @details 
-#'
 #' @examples
 #' img.list <- list()
-#' for(i in 1:3) img.list[[i]] <- raster::as.raster(matrix(runif(4),2,2))
+#' for(i in 1:3) img.list[[i]] <- raster::as.raster(matrix(stats::runif(4),2,2))
 #' 
 #' library(ggplot2)
 #' p <- ggplot(mtcars, aes(x=mpg, y=hp)) + geom_line() + facet_wrap(~cyl)
+#' \dontrun{
 #' addIMGtopanel(p, img.list)
+#' }
 #'
 #' #In this example, the images are cut off at the top.
-#' p <- ggplot(mtcars, aes(x = mpg, y = wt)) + geom_point()
-#'  + facet_grid(vs + am ~ gear, margins = TRUE)
+#' p <- ggplot(mtcars, aes(x = mpg, y = wt)) + geom_point() + 
+#'      facet_grid(vs + am ~ gear, margins = TRUE)
+#' \dontrun{
 #' addIMGtopanel(p, img.list)
-
+#' }
+#' 
 #' @export
 addIMGtopanel <- function(p1, img.list, pal = colorRamps::matlab.like(100)){
-  library(ggplot2)
-  
+
   plot(p1)
   
   # Get the current viewport tree
@@ -44,9 +45,9 @@ addIMGtopanel <- function(p1, img.list, pal = colorRamps::matlab.like(100)){
   cols <- match(cols, sort(unique(cols)))
   
   # set up a viewport for my image; always top left
-  vp.img <- grid::viewport(x=unit(0.1,"npc"), y=unit(0.9,"npc"), width=unit(0.2, "npc"), just = "left")
-  vp.img2 <- grid::viewport(x=unit(0.3,"npc"), y=unit(0.9,"npc"), width=unit(0.2, "npc"), just = "left")
-  vp.img3 <- grid::viewport(x=unit(0.4,"npc"), y=unit(0.9,"npc"), width=unit(0.2, "npc"), just = "left")
+  vp.img <- grid::viewport(x=grid::unit(0.1,"npc"), y=grid::unit(0.9,"npc"), width=grid::unit(0.2, "npc"), just = "left")
+  vp.img2 <- grid::viewport(x=grid::unit(0.3,"npc"), y=grid::unit(0.9,"npc"), width=grid::unit(0.2, "npc"), just = "left")
+  vp.img3 <- grid::viewport(x=grid::unit(0.4,"npc"), y=grid::unit(0.9,"npc"), width=grid::unit(0.2, "npc"), just = "left")
   # add the images to each facet
   img.i <- 1
   for(rr in 1:max(rows)){

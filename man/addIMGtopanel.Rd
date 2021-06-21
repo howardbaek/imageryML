@@ -16,19 +16,21 @@ addIMGtopanel(p1, img.list, pal = colorRamps::matlab.like(100))
 \description{
 This adds images in a image list to the panels in a ggplot object.
 }
-\details{
-
-}
 \examples{
 img.list <- list()
-for(i in 1:3) img.list[[i]] <- raster::as.raster(matrix(runif(4),2,2))
+for(i in 1:3) img.list[[i]] <- raster::as.raster(matrix(stats::runif(4),2,2))
 
 library(ggplot2)
 p <- ggplot(mtcars, aes(x=mpg, y=hp)) + geom_line() + facet_wrap(~cyl)
+\dontrun{
 addIMGtopanel(p, img.list)
+}
 
 #In this example, the images are cut off at the top.
-p <- ggplot(mtcars, aes(x = mpg, y = wt)) + geom_point()
- + facet_grid(vs + am ~ gear, margins = TRUE)
+p <- ggplot(mtcars, aes(x = mpg, y = wt)) + geom_point() + 
+     facet_grid(vs + am ~ gear, margins = TRUE)
+\dontrun{
 addIMGtopanel(p, img.list)
+}
+
 }
