@@ -43,7 +43,7 @@ processCSV <- function(file, aspect_ratio, lat_range, long_range, has.alt = FALS
   })
   if (any((n.by.date - n.by.date[1]) != 0)) stop("There's a problem. Should be same n for each date.")
 
-  dat.wide <- tidyr::pivot_wider(dat.box, names_from = date, values_from = sst)
+  dat.wide <- tidyr::pivot_wider(dat.box, names_from = .data$date, values_from = .data$sst)
   pos.loc <- which(!is.na(dat.wide[, 3])) # which row are NA?
   dat.clean <- stats::na.omit(dat.wide) # remove the rows that are NA
 

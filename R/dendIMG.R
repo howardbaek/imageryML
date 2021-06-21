@@ -38,7 +38,7 @@ dendIMG <- function(centers, img.list, type = c("mean0", "original", "correlatio
                     color.breaks = c(-2, -0.4, 0.4, 2)) {
   type <- match.arg(type)
   lab.extra <- match.arg(lab.extra)
-  # library(dendextend)
+
   n.K <- nrow(centers)
   lab.extra <- match.arg(lab.extra)
   if (lab.extra == "mean") labs <- paste0("C", 1:n.K, " (", round(apply(centers, 1, mean, na.rm = TRUE) - mean(centers, na.rm = TRUE), digits = 1), ")")
@@ -68,7 +68,7 @@ dendIMG <- function(centers, img.list, type = c("mean0", "original", "correlatio
   graphics::par(mar = c(10, 3, 1, 0), oma = rep(0, 4))
   lab.width <- max(graphics::strwidth(paste0(labs, "a"), units = "inches"))
   # y location of extent of labels
-  stats::plot(dend)
+  plot(dend)
   user.range <- graphics::par("usr")[c(2, 4)] - graphics::par("usr")[c(1, 3)]
   in.to.usr <- graphics::par("pin") / user.range # in/usr ratio
   # images will be min inches ((0.8*par("pin")[1]/12.96), 0.8*in.to.usr[1])

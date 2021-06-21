@@ -65,9 +65,9 @@ yearTable <- function(X2, method = c("kmeans", "hclust.complete", "hclust.ward",
   colnames(df.year) <- paste("C", unique(sub_grp))
   df.year$year <- as.numeric(years)
   df.year.long <- tidyr::pivot_longer(df.year, tidyselect::starts_with("C"), names_to = "cluster", values_to = "count")
-  p1 <- ggplot2::ggplot(df.year.long, ggplot2::aes(x = year, y = count)) +
+  p1 <- ggplot2::ggplot(df.year.long, ggplot2::aes(x = .data$year, y = .data$count)) +
     ggplot2::geom_point() +
-    ggplot2::facet_wrap(~cluster, scales = "free")
+    ggplot2::facet_wrap(~.data$cluster, scales = "free")
 
   return(list(p = p1, centers = centers, clusters = sub_grp))
 }

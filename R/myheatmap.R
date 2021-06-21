@@ -20,7 +20,7 @@ myheatmap <- function(dend, kobject, main.n=3, sub.n=7, ramp=c("mean", "var"),
   cluster <- kobject$cluster
   img.group <- kobject$cluster
   CC <- kobject$centers
-  # library(ggplot2)
+
   df <- data.frame(date=as.Date(names(cluster)), cluster=as.factor(cluster))
   df$month <- factor(months(df$date), levels=month.name[1:12])
   df$year <- as.numeric(format(df$date,'%Y'))
@@ -60,9 +60,9 @@ myheatmap <- function(dend, kobject, main.n=3, sub.n=7, ramp=c("mean", "var"),
   }
 
   # Plot
-  p1 <- ggplot2::ggplot(df, ggplot2::aes(x=year, y=month, fill= cluster)) +
+  p1 <- ggplot2::ggplot(df, ggplot2::aes(x=.data$year, y=.data$month, fill= .data$cluster)) +
     ggplot2::geom_tile() +
     ggplot2::scale_fill_manual(values=pal.sub)
-  if(plotit) ggplot2::plot(p1)
+  if(plotit) plot(p1)
   return(p1)
 }

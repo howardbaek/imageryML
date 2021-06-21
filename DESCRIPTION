@@ -12,19 +12,19 @@ Authors@R:
            email = "howardba@uw.edu")
            )
 Description: Various functions for downloading data, processing raster images, and running machine learning algorithms on images.
-Depends: R, graphics, grDevices
+Depends: graphics, grDevices, ggplot2
 Imports: 
+  here,
+  stringr,
   tidyr,
   tidyselect,
   raster,
-  tmap,
-  ggplot2,
-  png,
-  gridExtra,
+  grid,
+  colorRamps,
+  RColorBrewer,
   dendextend,
-  DescTools,
   utils
-Suggests: fpc, lubridate, tidyverse, scales, factoextra
+Suggests: fpc, lubridate, tidyverse, scales, factoextra, png, gridExtra, DescTools, tmap
 License: AGPL (>= 3)
 Encoding: UTF-8
 LazyData: true
