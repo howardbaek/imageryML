@@ -28,8 +28,6 @@ yearTable(
 \item{eps}{?}
 
 \item{dist.type}{Distance function to use in the clustering.}
-
-\item{plotit}{If TRUE, plot the heat map.}
 }
 \value{
 A list with two types of objects: a heatmap and a dendogram.

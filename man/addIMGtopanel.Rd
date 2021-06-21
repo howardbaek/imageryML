@@ -29,6 +29,6 @@ addIMGtopanel(p, img.list)
 
 #In this example, the images are cut off at the top.
 p <- ggplot(mtcars, aes(x = mpg, y = wt)) + geom_point()
-p <- mg + facet_grid(vs + am ~ gear, margins = TRUE)
+ + facet_grid(vs + am ~ gear, margins = TRUE)
 addIMGtopanel(p, img.list)
 }

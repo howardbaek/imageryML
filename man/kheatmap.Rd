@@ -34,6 +34,12 @@ kheatmap(
 \item{nstart}{Passed to the kmeans function.}
 
 \item{plotit}{If TRUE, plot the heat map.}
+
+\item{ramp}{Type of smoothing to do on shading within a group. Passed to \code{\link[=myheatmap]{myheatmap()}}.}
+
+\item{ramp.type}{Type of shading to do. Passed to \code{\link[=myheatmap]{myheatmap()}}.}
+
+\item{dend.type}{Typ of dendrogram passed to \code{\link[=dendIMG]{dendIMG()}}.}
 }
 \value{
 A list with two types of objects: a heatmap and a dendogram.

@@ -29,6 +29,8 @@ getdata(
 
 \item{altitude}{Optional. Some data types need this. Ignore if not. Look on the data page. time, latitude and longitude are always there. If altitude is also there, then put that in.}
 
+\item{alt.name}{If altitude is present, what is it's name.}
+
 \item{eserver}{The url to the erddap server}
 
 \item{datadir}{The folder where to save the data.}
