@@ -23,23 +23,23 @@ yearTable <- function(X2, method = c("kmeans", "hclust.complete", "hclust.ward",
   df <- as.data.frame(X2)
   if (dist.type == "correlation") {
     mat <- (1 - cor(t(X2))) / 2
-    d <- as.dist(mat)
+    d <- stats::as.dist(mat)
   }
   if (dist.type == "euclidian") d <- dist(df, method = "euclidian")
   if (dist.type == "canberra") d <- dist(df, method = "canberra")
   if (dist.type == "euclidian2") d <- dist(df, method = "euclidian")^2
   if (method == "hclust.complete") {
-    clus <- hclust(d, method = "complete")
-    sub_grp <- cutree(clus, k = K)
+    clus <- stats::hclust(d, method = "complete")
+    sub_grp <- stats::cutree(clus, k = K)
     centers <- apply(X2, 2, function(x) tapply(x, sub_grp, mean))
   }
   if (method == "hclust.ward") {
-    clus <- hclust(d, method = "ward.D2")
-    sub_grp <- cutree(clus, k = K)
+    clus <- stats::hclust(d, method = "ward.D2")
+    sub_grp <- stats::cutree(clus, k = K)
     centers <- apply(X2, 2, function(x) tapply(x, sub_grp, mean))
   }
   if (method == "kmeans") {
-    out <- kmeans(X2, K, iter.max = iter.max, nstart = nstart)
+    out <- stats::kmeans(X2, K, iter.max = iter.max, nstart = nstart)
     sub_grp <- out$cluster
     centers <- out$centers
   }
@@ -66,10 +66,9 @@ yearTable <- function(X2, method = c("kmeans", "hclust.complete", "hclust.ward",
   colnames(df.year) <- paste("C", unique(sub_grp))
   df.year$year <- as.numeric(years)
   df.year.long <- tidyr::pivot_longer(df.year, starts_with("C"), names_to = "cluster", values_to = "count")
-  library(ggplot2)
-  p1 <- ggplot(df.year.long, aes(x = year, y = count)) +
-    geom_point() +
-    facet_wrap(~cluster, scales = "free")
+  p1 <- ggplot2::ggplot(df.year.long, ggplot2::aes(x = year, y = count)) +
+    ggplot2::geom_point() +
+    ggplot2::facet_wrap(~cluster, scales = "free")
 
   return(list(p = p1, centers = centers, clusters = sub_grp))
 }
