@@ -30,7 +30,7 @@ myheatmap <- function(dend, kobject, main.n=3, sub.n=7, ramp=c("mean", "var"),
   df$sub.group <- as.factor(img.group)
 
   # Set up my palette; ramp within the main group
-  dend.group.main <- cutree(dend, k=main.n)
+  dend.group.main <- stats::cutree(dend, k=main.n)
   pal.sub <- rep(NA, attr(dend, "members"))
   pals <- c("YlOrRd", "Greys", "Greens", "BuPu", "Blues")
   pals[main.n] <- "Blues"

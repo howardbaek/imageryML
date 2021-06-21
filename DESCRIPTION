@@ -12,11 +12,10 @@ Authors@R:
            email = "howardba@uw.edu")
            )
 Description: Various functions for downloading data, processing raster images, and running machine learning algorithms on images.
+Depends: R, graphics, grDevices
 Imports: 
-  tidyverse,
-  lubridate,
-  scales,
-  factoextra,
+  tidyr,
+  tidyselect,
   raster,
   tmap,
   ggplot2,
@@ -25,8 +24,8 @@ Imports:
   dendextend,
   DescTools,
   utils
-Suggests: fpc
-License: ``use_gpl3_license()`
+Suggests: fpc, lubridate, tidyverse, scales, factoextra
+License: AGPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

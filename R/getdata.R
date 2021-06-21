@@ -22,6 +22,7 @@
 #' @param lon Min-max longitude
 #' @param date To specify a date range, pass this in like c("2020-01-01", "2020-02-01"). Leave off to download the whole data range.
 #' @param altitude Optional. Some data types need this. Ignore if not. Look on the data page. time, latitude and longitude are always there. If altitude is also there, then put that in.
+#' @param alt.name If altitude is present, what is it's name.
 #' @param eserver The url to the erddap server
 #' @param datadir The folder where to save the data.
 #' 

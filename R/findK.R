@@ -3,8 +3,8 @@
 #' findK will loop through a range of Ks and will plot the cost
 #' 
 #' @param X A matrix where each column is a vectorized image
-#' @param n_inits passed to `stats::kmeans()`
-#' @param n_iters passed to `stats::kmeans()`
+#' @param nstart passed to `stats::kmeans()`
+#' @param iter.max passed to `stats::kmeans()`
 #' @param n_K max number of clusters
 #' 
 #' @return Plots K versus cost.

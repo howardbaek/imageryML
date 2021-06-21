@@ -42,7 +42,7 @@ dendIMG <- function(centers, img.list, type = c("mean0", "original", "correlatio
   n.K <- nrow(centers)
   lab.extra <- match.arg(lab.extra)
   if (lab.extra == "mean") labs <- paste0("C", 1:n.K, " (", round(apply(centers, 1, mean, na.rm = TRUE) - mean(centers, na.rm = TRUE), digits = 1), ")")
-  if (lab.extra == "var") labs <- paste0("C", 1:n.K, " (", round(sqrt(apply(centers, 1, var, na.rm = TRUE)), digits = 2), ")")
+  if (lab.extra == "var") labs <- paste0("C", 1:n.K, " (", round(sqrt(apply(centers, 1, stats::var, na.rm = TRUE)), digits = 2), ")")
   if (lab.extra == "none") labs <- paste0("C", 1:n.K)
   if (type == "original") {
     mat <- centers
@@ -65,20 +65,20 @@ dendIMG <- function(centers, img.list, type = c("mean0", "original", "correlatio
     dendextend::labels_colors(dend) <- as.character(cols)[stats::order.dendrogram(dend)]
   }
   # https://rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf
-  par(mar = c(10, 3, 1, 0), oma = rep(0, 4))
+  graphics::par(mar = c(10, 3, 1, 0), oma = rep(0, 4))
   lab.width <- max(graphics::strwidth(paste0(labs, "a"), units = "inches"))
   # y location of extent of labels
   stats::plot(dend)
-  user.range <- par("usr")[c(2, 4)] - par("usr")[c(1, 3)]
-  in.to.usr <- par("pin") / user.range # in/usr ratio
+  user.range <- graphics::par("usr")[c(2, 4)] - graphics::par("usr")[c(1, 3)]
+  in.to.usr <- graphics::par("pin") / user.range # in/usr ratio
   # images will be min inches ((0.8*par("pin")[1]/12.96), 0.8*in.to.usr[1])
   # don't go bigger than what image would be if x range were 12.96 (K=12)
-  img.width.in <- min(0.8 * par("pin")[1] / 12.96, 0.8 * in.to.usr[1])
+  img.width.in <- min(0.8 * graphics::par("pin")[1] / 12.96, 0.8 * in.to.usr[1])
   img.height.in <- img.width.in * nrow(img.list[[1]]) / ncol(img.list[[1]])
   img.width.usr <- img.width.in / in.to.usr[1]
   img.height.usr <- img.height.in / in.to.usr[2]
   # top of the image in usr y measurement
-  img.top.usr <- par("usr")[3] - lab.width / in.to.usr[2]
+  img.top.usr <- graphics::par("usr")[3] - lab.width / in.to.usr[2]
   img.bottom.usr <- img.top.usr - img.height.usr
 
   for (i in 1:n.K) {

@@ -11,7 +11,6 @@
 #' @param nstart Passed to the kmeans function.
 #' @param eps ?
 #' @param dist.type Distance function to use in the clustering.
-#' @param plotit If TRUE, plot the heat map.
 #'
 #' @return A list with two types of objects: a heatmap and a dendogram.
 #'
@@ -22,12 +21,12 @@ yearTable <- function(X2, method = c("kmeans", "hclust.complete", "hclust.ward",
   method <- match.arg(method)
   df <- as.data.frame(X2)
   if (dist.type == "correlation") {
-    mat <- (1 - cor(t(X2))) / 2
+    mat <- (1 - stats::cor(t(X2))) / 2
     d <- stats::as.dist(mat)
   }
-  if (dist.type == "euclidian") d <- dist(df, method = "euclidian")
-  if (dist.type == "canberra") d <- dist(df, method = "canberra")
-  if (dist.type == "euclidian2") d <- dist(df, method = "euclidian")^2
+  if (dist.type == "euclidian") d <- stats::dist(df, method = "euclidian")
+  if (dist.type == "canberra") d <- stats::dist(df, method = "canberra")
+  if (dist.type == "euclidian2") d <- stats::dist(df, method = "euclidian")^2
   if (method == "hclust.complete") {
     clus <- stats::hclust(d, method = "complete")
     sub_grp <- stats::cutree(clus, k = K)
@@ -65,7 +64,7 @@ yearTable <- function(X2, method = c("kmeans", "hclust.complete", "hclust.ward",
   df.year <- as.data.frame(dmat)
   colnames(df.year) <- paste("C", unique(sub_grp))
   df.year$year <- as.numeric(years)
-  df.year.long <- tidyr::pivot_longer(df.year, starts_with("C"), names_to = "cluster", values_to = "count")
+  df.year.long <- tidyr::pivot_longer(df.year, tidyselect::starts_with("C"), names_to = "cluster", values_to = "count")
   p1 <- ggplot2::ggplot(df.year.long, ggplot2::aes(x = year, y = count)) +
     ggplot2::geom_point() +
     ggplot2::facet_wrap(~cluster, scales = "free")
