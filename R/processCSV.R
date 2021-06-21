@@ -6,7 +6,7 @@
 #' **Notes**: See also the tidy version.
 #'
 #' @details
-#' `stats::kmeans()` wants a matrix where each row is a sample of your data. \So we want each
+#' `stats::kmeans()` wants a matrix where each row is a sample of your data. So we want each
 #' row of our data matrix to be a date and the columns will be the pixels in the image.
 #'
 #' @param X
