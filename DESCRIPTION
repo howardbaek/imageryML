@@ -24,6 +24,7 @@ Imports:
   gridExtra,
   dendextend,
   DescTools
+Suggests: fpc
 License: ``use_gpl3_license()`
 Encoding: UTF-8
 LazyData: true
