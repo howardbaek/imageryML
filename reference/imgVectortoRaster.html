@@ -134,7 +134,7 @@ the cleaned (no land) images.</p></td>
 
     <p><code>datalist</code> is a list with <code>dat</code>, <code>dat.clean</code>, and <code>pos.loc</code>. <code>dat</code> and <code>dat.clean</code> are
 vectorized images, meaning a raster image is made into a vector by concatenating each row of
-the raster into a rows $$ columns vector. The first 2 rows of <code>dat</code> and <code>dat.clean</code> are
+the raster into a rows x columns vector. The first 2 rows of <code>dat</code> and <code>dat.clean</code> are
 the latitude and longitude values. <code>dat</code> has the land (NAs) while <code>dat.clean</code> has the land
 removed so is smaller. <code>pos.loc</code> is the location of the positive values (not land) in <code>dat</code>.
 <code>pos.loc</code> is used to allow you to reconstruct the image from <code>dat.clean</code>.</p>

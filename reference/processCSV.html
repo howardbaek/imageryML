@@ -120,6 +120,10 @@ Notes: See also the tidy version." />
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>file</th>
+      <td><p>name of the csv file</p></td>
+    </tr>
+    <tr>
       <th>aspect_ratio</th>
       <td><p>c(width, height). This is <code><a href='https://rdrr.io/r/base/c.html'>c(length(unique(lons)), length(unique(lats)))</a></code></p></td>
     </tr>
@@ -148,7 +152,7 @@ non-NA pixels (columns in <code>dat.wide</code>) so that the image can be recons
 k clustering is performed.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code><a href='https://rdrr.io/r/stats/kmeans.html'>stats::kmeans()</a></code> wants a matrix where each row is a sample of your data.  we want each
+    <p><code><a href='https://rdrr.io/r/stats/kmeans.html'>stats::kmeans()</a></code> wants a matrix where each row is a sample of your data. So we want each
 row of our data matrix to be a date and the columns will be the pixels in the image.</p>
 
   </div>

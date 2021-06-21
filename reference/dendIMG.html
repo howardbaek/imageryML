@@ -141,6 +141,10 @@ function uses functions from the <strong>dendextend</strong> and <strong>stats</
       <td><p>The type of distance to use. This will determine how to calculate the distance between the centers. See details.</p></td>
     </tr>
     <tr>
+      <th>scale.same</th>
+      <td><p>All images should be on the same scale</p></td>
+    </tr>
+    <tr>
       <th>pal</th>
       <td><p>The color ramp for the images. This will determine what the images look like.</p></td>
     </tr>
@@ -170,6 +174,13 @@ distance matrix.</p>
 dendrogram plot using <code><a href='https://rdrr.io/r/graphics/rasterImage.html'>rasterImage()</a></code>.</p>
 <p>A dendrogram object is returned.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>centers</span> <span class='op'>&lt;-</span> <span class='fu'><a href='distMat.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>*</span><span class='fl'>4</span><span class='op'>)</span>, <span class='fl'>10</span>, <span class='fl'>4</span><span class='op'>)</span>
+<span class='va'>img.list</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='kw'>for</span><span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span> <span class='va'>img.list</span><span class='op'>[[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'>raster</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/raster/man/as.raster.html'>as.raster</a></span><span class='op'>(</span><span class='fu'><a href='distMat.html'>matrix</a></span><span class='op'>(</span><span class='va'>centers</span><span class='op'>[</span><span class='va'>i</span>,<span class='op'>]</span>,<span class='fl'>2</span>,<span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>dendIMG</span><span class='op'>(</span><span class='va'>centers</span>, <span class='va'>img.list</span>, lab.extra<span class='op'>=</span><span class='st'>"none"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error: 'plot' is not an exported object from 'namespace:stats'</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
