@@ -23,7 +23,8 @@ Imports:
   png,
   gridExtra,
   dendextend,
-  DescTools
+  DescTools,
+  utils
 Suggests: fpc
 License: ``use_gpl3_license()`
 Encoding: UTF-8
