@@ -19,7 +19,7 @@ function is specific to the data format for the upwelling project.
 \details{
 \code{datalist} is a list with \code{dat}, \code{dat.clean}, and \code{pos.loc}. \code{dat} and \code{dat.clean} are
 vectorized images, meaning a raster image is made into a vector by concatenating each row of
-the raster into a rows $\times$ columns vector. The first 2 rows of \code{dat} and \code{dat.clean} are
+the raster into a rows x columns vector. The first 2 rows of \code{dat} and \code{dat.clean} are
 the latitude and longitude values. \code{dat} has the land (NAs) while \code{dat.clean} has the land
 removed so is smaller. \code{pos.loc} is the location of the positive values (not land) in \code{dat}.
 \code{pos.loc} is used to allow you to reconstruct the image from \code{dat.clean}.

@@ -22,6 +22,8 @@ dendIMG(
 
 \item{type}{The type of distance to use. This will determine how to calculate the distance between the centers. See details.}
 
+\item{scale.same}{All images should be on the same scale}
+
 \item{pal}{The color ramp for the images. This will determine what the images look like.}
 
 \item{lab.extra}{Extra information to add to the labels. \code{"mean"} will add the mean value of the center (minus mean over all centers) and \code{"var"} will add the variance.}
@@ -46,4 +48,11 @@ Once the distance matrix is calculated, \code{stats::hclust()} is used to create
 dendrogram plot using \code{rasterImage()}.
 
 A dendrogram object is returned.
+}
+\examples{
+centers <- matrix(runif(10*4), 10, 4)
+img.list <- list()
+for(i in 1:10) img.list[[i]] <- raster::as.raster(matrix(centers[i,],2,2))
+dendIMG(centers, img.list, lab.extra="none")
+
 }

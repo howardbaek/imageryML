@@ -7,6 +7,8 @@
 processCSV(file, aspect_ratio, lat_range, long_range, has.alt = FALSE)
 }
 \arguments{
+\item{file}{name of the csv file}
+
 \item{aspect_ratio}{c(width, height). This is \code{c(length(unique(lons)), length(unique(lats)))}}
 
 \item{lat_range}{What range to subset}
@@ -30,6 +32,6 @@ processCSV will read in a csv file of SST and return the matrices needed for \co
 \strong{Notes}: See also the tidy version.
 }
 \details{
-\code{stats::kmeans()} wants a matrix where each row is a sample of your data. \So we want each
+\code{stats::kmeans()} wants a matrix where each row is a sample of your data. So we want each
 row of our data matrix to be a date and the columns will be the pixels in the image.
 }

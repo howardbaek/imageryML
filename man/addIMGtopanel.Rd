@@ -19,3 +19,16 @@ This adds images in a image list to the panels in a ggplot object.
 \details{
 
 }
+\examples{
+img.list <- list()
+for(i in 1:3) img.list[[i]] <- raster::as.raster(matrix(runif(4),2,2))
+
+library(ggplot2)
+p <- ggplot(mtcars, aes(x=mpg, y=hp)) + geom_line() + facet_wrap(~cyl)
+addIMGtopanel(p, img.list)
+
+#In this example, the images are cut off at the top.
+p <- ggplot(mtcars, aes(x = mpg, y = wt)) + geom_point()
+p <- mg + facet_grid(vs + am ~ gear, margins = TRUE)
+addIMGtopanel(p, img.list)
+}

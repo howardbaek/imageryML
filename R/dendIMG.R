@@ -6,7 +6,7 @@
 #' @param centers The centers. Each row is a center and each column is a variable.
 #' @param img.list A list of images for each center. Image 1 goes with center row 1, etc.
 #' @param type The type of distance to use. This will determine how to calculate the distance between the centers. See details.
-#' @param scale.same
+#' @param scale.same All images should be on the same scale
 #' @param pal The color ramp for the images. This will determine what the images look like.
 #' @param lab.extra Extra information to add to the labels. `"mean"` will add the mean value of the center (minus mean over all centers) and `"var"` will add the variance.
 #' @param color.labels If TRUE, the labels are blue if below a threshold, black within, and red over.
@@ -24,7 +24,7 @@
 #' 
 #' A dendrogram object is returned.
 #'
-#' @example
+#' @examples
 #' centers <- matrix(runif(10*4), 10, 4)
 #' img.list <- list()
 #' for(i in 1:10) img.list[[i]] <- raster::as.raster(matrix(centers[i,],2,2))

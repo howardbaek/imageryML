@@ -33,7 +33,7 @@ getdata <- function(id, pars=NULL, lat=c(7,13), lon=c(72,78), date=NULL,
                     eserver="http://apdrc.soest.hawaii.edu/erddap",
                     datadir = "data"){
   url <- paste0(eserver, "/info/", id, "/index.csv")
-  meta <- read.csv(url)
+  meta <- utils::read.csv(url)
   
   if(!missing(date) && length(date)==1) date <- c(date, date)
   if(missing(date)) date <- c(meta$Value[meta$Attribute.Name=="time_coverage_start"], meta$Value[meta$Attribute.Name=="time_coverage_end"])
@@ -53,12 +53,12 @@ getdata <- function(id, pars=NULL, lat=c(7,13), lon=c(72,78), date=NULL,
     val <- paste0("[(", date[1], "):1:(", date[2], ")]",alttag,"[(",lat1,"):1:(",lat2,")][(",lon1,"):1:(",lon2,")]")
     val2 <- paste0(pars, val, collapse=",")
     url <- paste0(eserver, "/griddap/", id, ".csv?", val2)
-    download.file(url, destfile=dfil)
+    utils::download.file(url, destfile=dfil)
     cat("data saved to", dfil, "\n")
   }else{
     cat("data read from", dfil, "\n")
   }
-  dat <- read.csv(file=dfil, stringsAsFactors = FALSE)
+  dat <- utils::read.csv(file=dfil, stringsAsFactors = FALSE)
   dat <- dat[-1,]
   for(i in 2:ncol(dat)) dat[[i]] <- as.numeric(dat[[i]])
   dat$time <- as.POSIXlt(dat$time, format="%Y-%m-%dT%H:%M:%OSZ", tz="UTC")

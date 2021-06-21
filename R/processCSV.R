@@ -9,7 +9,7 @@
 #' `stats::kmeans()` wants a matrix where each row is a sample of your data. So we want each
 #' row of our data matrix to be a date and the columns will be the pixels in the image.
 #'
-#' @param X
+#' @param file name of the csv file
 #' @param aspect_ratio c(width, height). This is `c(length(unique(lons)), length(unique(lats)))`
 #' @param lat_range What range to subset
 #' @param long_range What range to subset
@@ -25,13 +25,12 @@
 #'
 #' @export
 processCSV <- function(file, aspect_ratio, lat_range, long_range, has.alt = FALSE) {
-  library(dplyr)
 
   # constants
   pixels <- prod(aspect_ratio)
 
   # reads the file
-  dat <- read.table(file, sep = ",", skip = 2)
+  dat <- utils::read.table(file, sep = ",", skip = 2)
   if (has.alt) dat <- dat[, -2]
   colnames(dat) <- c("date", "lat", "lon", "sst")
   dat$date <- as.Date(dat$date)
@@ -44,7 +43,7 @@ processCSV <- function(file, aspect_ratio, lat_range, long_range, has.alt = FALS
   })
   if (any((n.by.date - n.by.date[1]) != 0)) stop("There's a problem. Should be same n for each date.")
 
-  dat.wide <- pivot_wider(dat.box, names_from = date, values_from = sst)
+  dat.wide <- dplyr::pivot_wider(dat.box, names_from = date, values_from = sst)
   pos.loc <- which(!is.na(dat.wide[, 3])) # which row are NA?
   dat.clean <- na.omit(dat.wide) # remove the rows that are NA
 

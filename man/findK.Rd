@@ -9,7 +9,11 @@ findK(X, nstart = 25, iter.max = 10, n_K = 15)
 \arguments{
 \item{X}{A matrix where each column is a vectorized image}
 
-\item{n_K}{}
+\item{n_K}{max number of clusters}
+
+\item{n_inits}{passed to \code{stats::kmeans()}}
+
+\item{n_iters}{passed to \code{stats::kmeans()}}
 }
 \value{
 Plots K versus cost.

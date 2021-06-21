@@ -15,6 +15,8 @@ yearTable(
 )
 }
 \arguments{
+\item{X2}{matrix where each row is a vectorized image}
+
 \item{method}{What clustering function to use.}
 
 \item{K}{Number of clusters}
@@ -22,6 +24,8 @@ yearTable(
 \item{iter.max}{Passed to the kmeans function.}
 
 \item{nstart}{Passed to the kmeans function.}
+
+\item{eps}{?}
 
 \item{dist.type}{Distance function to use in the clustering.}
 

@@ -8,7 +8,7 @@
 #'
 #' @details 
 #'
-#' @example
+#' @examples
 #' img.list <- list()
 #' for(i in 1:3) img.list[[i]] <- raster::as.raster(matrix(runif(4),2,2))
 #' 
