@@ -12,14 +12,14 @@
 #' 
 #' library(ggplot2)
 #' p <- ggplot(mtcars, aes(x=mpg, y=hp)) + geom_line() + facet_wrap(~cyl)
-#' \dontrun{
+#' \donttest{
 #' addIMGtopanel(p, img.list)
 #' }
 #'
 #' #In this example, the images are cut off at the top.
 #' p <- ggplot(mtcars, aes(x = mpg, y = wt)) + geom_point() + 
 #'      facet_grid(vs + am ~ gear, margins = TRUE)
-#' \dontrun{
+#' \donttest{
 #' addIMGtopanel(p, img.list)
 #' }
 #' 
