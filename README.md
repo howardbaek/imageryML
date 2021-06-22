@@ -10,3 +10,4 @@ Installation:
 ```
 devtools::install_github("UW-Upwelling-Project/imageryML")
 ```
+

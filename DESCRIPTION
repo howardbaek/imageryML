@@ -1,6 +1,6 @@
 Package: imageryML
 Title: Functions for Machine Learning with Oceanographic Imagery
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: 
     c(person(given = "Eli",
            family = "Holmes",

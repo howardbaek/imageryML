@@ -1,5 +1,10 @@
 url: https://uw-upwelling-project.github.io/imageryML/
 
+home:
+  links:
+  - text: Team discussion
+    href: https://github.com/orgs/UW-Upwelling-Project/teams/seattle
+    
 development:
   mode: auto
 
