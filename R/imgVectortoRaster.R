@@ -6,6 +6,7 @@
 #' @param centers a matrix where each row is an image in vector form. It is assumed to be only
 #'  the cleaned (no land) images.
 #' @param datalist a data list with information about the positive locations (non-land).
+#' @param proj.name default projection name
 #'
 #' @details
 #'
@@ -17,7 +18,7 @@
 #' `pos.loc` is used to allow you to reconstruct the image from `dat.clean`.
 #'
 #' @export
-imgVectortoRaster <- function(centers, datalist){
+imgVectortoRaster <- function(centers, datalist, proj.name="+proj=longlat +datum=WGS84"){
   n_K <- nrow(centers)
   Data_dirty <- datalist$dat
   lats <- Data_dirty[1,]
@@ -34,10 +35,11 @@ imgVectortoRaster <- function(centers, datalist){
     tmp <- tmp[asp[2]:1, ] # lat 7 at bottom not top
     tmp <- raster::raster(tmp)
     raster::extent(tmp) <- bb.box
+    raster::crs(tmp) <- proj.name
     img.list[[i]] <- tmp
   }
   img.stack <- raster::stack(img.list)
   names(img.stack) <- paste("Centroid", 1:n_K)
-  raster::crs(img.stack) <- "+proj=longlat +datum=WGS84"
+  raster::crs(img.stack) <- proj.name
   return(list(list=img.list, stack=img.stack))
 }
