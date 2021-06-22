@@ -1,0 +1,14 @@
+url: https://uw-upwelling-project.github.io/imageryML/
+
+development:
+  mode: auto
+
+template:
+  params:
+    bootswatch: cosmo
+
+authors:
+  Eli Holmes:
+    href: http://eeholmes.github.io/
+  Howard Baek:
+    href: http://insidethetv.rbind.io/

@@ -39,5 +39,7 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 .Rproj.user
-docs
 imageryML.Rproj
+
+# pkgdown
+docs

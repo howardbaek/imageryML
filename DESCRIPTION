@@ -30,3 +30,6 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+URL: https://github.com/UW-Upwelling-Project/imageryML, https://uw-upwelling-project.github.io/imageryML/
+BugReports: https://github.com/UW-Upwelling-Project/imageryML/issues
+
