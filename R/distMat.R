@@ -5,7 +5,7 @@
 #' from the correlation matrix.
 #' 
 #' @param X A matrix
-#' @param remove.mean remove the mean from each row of X
+#' @param remove.mean If TRUE, will remove the mean from each row of X
 #' 
 #' @export
 distMat <- function(X, remove.mean=FALSE){

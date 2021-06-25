@@ -23,7 +23,7 @@ distMat(X, remove.mean = FALSE)
 \arguments{
 \item{X}{A matrix}
 
-\item{remove.mean}{remove the mean from each row of X}
+\item{remove.mean}{If TRUE, will remove the mean from each row of X}
 }
 \description{
 Distance matrices

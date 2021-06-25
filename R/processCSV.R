@@ -9,7 +9,7 @@
 #' `stats::kmeans()` wants a matrix where each row is a sample of your data. So we want each
 #' row of our data matrix to be a date and the columns will be the pixels in the image.
 #'
-#' @param file name of the csv file
+#' @param file Name of the csv file
 #' @param aspect_ratio c(width, height). This is `c(length(unique(lons)), length(unique(lats)))`
 #' @param lat_range What range to subset
 #' @param long_range What range to subset

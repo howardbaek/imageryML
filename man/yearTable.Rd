@@ -15,7 +15,7 @@ yearTable(
 )
 }
 \arguments{
-\item{X2}{matrix where each row is a vectorized image}
+\item{X2}{Matrix where each row is a vectorized image}
 
 \item{method}{What clustering function to use.}
 

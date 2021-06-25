@@ -7,12 +7,12 @@
 imgVectortoRaster(centers, datalist, proj.name = "+proj=longlat +datum=WGS84")
 }
 \arguments{
-\item{centers}{a matrix where each row is an image in vector form. It is assumed to be only
+\item{centers}{A matrix where each row is an image in vector form. It is assumed to be only
 the cleaned (no land) images.}
 
-\item{datalist}{a data list with information about the positive locations (non-land).}
+\item{datalist}{A data list with information about the positive locations (non-land).}
 
-\item{proj.name}{default projection name}
+\item{proj.name}{The default projection name}
 }
 \description{
 Takes a matrix where each row is an image in vector form and turns that into raster images. This

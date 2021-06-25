@@ -4,7 +4,7 @@
 #'
 #' **Notes**: Probably too customized and prelimanary to keep.
 #'
-#' @param X2 matrix where each row is a vectorized image
+#' @param X2 Matrix where each row is a vectorized image
 #' @param method What clustering function to use.
 #' @param K Number of clusters
 #' @param iter.max Passed to the kmeans function.

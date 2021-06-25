@@ -7,9 +7,9 @@
 desat(cols, sat = 0.5)
 }
 \arguments{
-\item{cols}{a vector of colors}
+\item{cols}{A vector of colors}
 
-\item{sat}{saturation level}
+\item{sat}{Saturation level}
 }
 \value{
 A list of desaturated colors.
@@ -19,6 +19,6 @@ Function for desaturating colors by specified proportion. Reference:
 https://stackoverflow.com/questions/26314701/r-reducing-colour-saturation-of-a-colour-palette
 }
 \details{
-See the \strong{colorspace} library for examples of \code{hsv()} colorspace manipulations and
-\strong{RColorBrewer} library for some example colors
+See the \strong{colorspace} library for examples of \code{hsv()} colorspace
+manipulations and \strong{RColorBrewer} library for some example colors
 }

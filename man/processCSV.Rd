@@ -7,7 +7,7 @@
 processCSV(file, aspect_ratio, lat_range, long_range, has.alt = FALSE)
 }
 \arguments{
-\item{file}{name of the csv file}
+\item{file}{Name of the csv file}
 
 \item{aspect_ratio}{c(width, height). This is \code{c(length(unique(lons)), length(unique(lats)))}}
 
