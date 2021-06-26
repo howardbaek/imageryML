@@ -1,0 +1,16 @@
+#' Sea Surface Temperature (SST), Daily Optimum Interpolation (OI) 
+#'
+#' A dataset containing date, latitude, longitude, and sst of the coast of Vancouver Island
+#' and Washington. Masked out the SST of Puget Sound, Strait of Juan de Fuca and Georgia Strait with NA.
+#' Latitude (42.625 to 52.125) and Longitude (229.875, 236.625)
+#' 
+#'
+#' @format A data frame with 150,697 rows and 4 variables:
+#' \describe{
+#'   \item{date}{month/day/year format}
+#'   \item{lat}{latitude, in degrees}
+#'   \item{long}{longitude, in degrees}
+#'   \item{sst}{Daily sea surface temperature, in Celsius}
+#' }
+#' @source \href{https://coastwatch.pfeg.noaa.gov/erddap/griddap/ncdcOisst21Agg.graph?sst%5B(2021-06-10T12:00:00Z)%5D%5B(0.0)%5D%5B(9.375):(85.375)%5D%5B(195.25):(271.25)%5D&.draw=surface&.vars=longitude%7Clatitude%7Csst&.colorBar=%7C%7C%7C2%7C20%7C&.bgColor=0xffccccff}{NOAA NCEI (National Centers for Environmental Information)}
+"df_raw"
