@@ -15,6 +15,6 @@ You can install imageryML like so:
 devtools::install_github("UW-Upwelling-Project/imageryML")
 ```
 
-## Quick Demo (TODO):
+## Demo:
 
-Guide users through the various functions in the package.
+

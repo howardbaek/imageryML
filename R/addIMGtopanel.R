@@ -28,6 +28,7 @@
 #'
 #' @export
 addIMGtopanel <- function(p1, img.list, pal = colorRamps::matlab.like(100)) {
+  
   plot(p1)
 
   # Get the current viewport tree

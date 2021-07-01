@@ -4,18 +4,18 @@
 \alias{processCSV}
 \title{Read in image csv}
 \usage{
-processCSV(file, aspect_ratio, lat_range, long_range, has.alt = FALSE)
+processCSV(file, lat_range, long_range, has.alt = FALSE)
 }
 \arguments{
 \item{file}{Name of the csv file}
-
-\item{aspect_ratio}{c(width, height). This is \code{c(length(unique(lons)), length(unique(lats)))}}
 
 \item{lat_range}{What range to subset}
 
 \item{long_range}{What range to subset}
 
 \item{has.alt}{If TRUE, then remove 2nd column}
+
+\item{aspect_ratio}{c(width, height). This is \code{c(length(unique(lons)), length(unique(lats)))}}
 }
 \value{
 The function returns \code{dat.wide} which is the original data (in the specified lat/lon box)
@@ -27,9 +27,7 @@ non-NA pixels (columns in \code{dat.wide}) so that the image can be reconstructe
 k clustering is performed.
 }
 \description{
-processCSV will read in a csv file of SST and return the matrices needed for \code{kmeans()}.
-
-\strong{Notes}: See also the tidy version.
+processCSV will read in a csv file of SST and return the matrices needed for various ML tasks.
 }
 \details{
 \code{stats::kmeans()} wants a matrix where each row is a sample of your data. So we want each

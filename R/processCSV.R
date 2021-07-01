@@ -1,9 +1,8 @@
 #' Read in image csv
 #'
 #' @description
-#' processCSV will read in a csv file of SST and return the matrices needed for `kmeans()`.
+#' processCSV will read in a csv file of SST and return the matrices needed for various ML tasks.
 #'
-#' **Notes**: See also the tidy version.
 #'
 #' @details
 #' `stats::kmeans()` wants a matrix where each row is a sample of your data. So we want each
@@ -24,29 +23,49 @@
 #' k clustering is performed.
 #'
 #' @export
-processCSV <- function(file, aspect_ratio, lat_range, long_range, has.alt = FALSE) {
+processCSV <- function(file, lat_range, long_range, has.alt = FALSE) {
 
-  # constants
-  pixels <- prod(aspect_ratio)
-
-  # reads the file
-  dat <- utils::read.table(file, sep = ",", skip = 2)
-  if (has.alt) dat <- dat[, -2]
-  colnames(dat) <- c("date", "lat", "lon", "sst")
-  dat$date <- as.Date(dat$date)
-
-  # limit to certain box
-  not.box <- dat$lat < lat_range[1] | dat$lat > lat_range[2] | dat$lon < long_range[1] | dat$lon > long_range[2]
-  dat.box <- dat[!not.box, ]
-  n.by.date <- tapply(dat.box$sst, dat.box$date, function(x) {
-    sum(is.na(x))
-  })
-  if (any((n.by.date - n.by.date[1]) != 0)) stop("There's a problem. Should be same n for each date.")
-
-  dat.wide <- tidyr::pivot_wider(dat.box, names_from = .data$date, values_from = .data$sst)
-  pos.loc <- which(!is.na(dat.wide[, 3])) # which row are NA?
-  dat.clean <- stats::na.omit(dat.wide) # remove the rows that are NA
-
-  # Note transpose since kmeans() wants variates in columns
-  return(list(dat = t(dat.wide), dat.clean = t(dat.clean), pos.loc = pos.loc))
+  # read the file and drop first row,
+  # which contains miscellaneous info
+  dat_raw <- read_csv(file) %>% 
+    slice(2:n())
+  
+  # If has_alt is TRUE, drop second column (latitude)
+  if (has_alt) {
+    dat_raw <- dat_raw %>% 
+      select(-2)
+  } 
+  
+  # Process dataset
+  dat_processed <- dat_raw %>% 
+    # Set column names
+    rename(date = time,
+           lat = latitude,
+           lon = longitude) %>% 
+    # Convert date column to Date type
+    mutate(date = as.Date(date)) %>% 
+    # Filter out unwanted latitudes, longitudes
+    filter(between(lat, lat_range[1], lat_range[2]),
+           between(lon, long_range[1], long_range[2]))
+  
+  # Check if same n for each date
+  n.by.date <- tapply(dat_processed$sst, dat_processed$date, function(x){sum(is.na(x))})
+  if(any((n.by.date-n.by.date[1])!=0)) {
+    stop("There's a problem. Should be same n for each date.")
+  } 
+  
+  # Pivot Wider
+  dat_wide <- dat_processed %>% 
+    pivot_wider(names_from = date, values_from = sst)
+  
+  # which row are non-NA?
+  pos_loc <- which(!is.na(dat_wide[,3]))
+  
+  # Remove NA
+  dat_clean <- dat_wide %>% 
+    # remove the rows that are NA
+    na.omit() 
+  
+  # Note: We transpose since kmeans() wants variates in columns
+  return(list(dat=t(dat_wide), dat_clean=t(dat_clean), pos_loc=pos_loc))
 }
